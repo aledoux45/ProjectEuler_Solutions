@@ -7,7 +7,9 @@ def list_factors(n):
     for k in range(2, int(r)+1):
         if n % k == 0:
             factors.append(k)
-            factors.append(n // k)
+            k2 = n // k
+            if k2 != k :
+                factors.append(k2)
     return factors
 
 if __name__ == "__main__":
