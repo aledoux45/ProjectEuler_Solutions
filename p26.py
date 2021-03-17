@@ -1,5 +1,6 @@
 def decimal_cycle(n):
     
+    
 if __name__ == "__main__":
     max_cycle = 0
     max_n = 0
