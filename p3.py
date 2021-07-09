@@ -34,6 +34,9 @@ def prime_factors(n):
     prime_factors = []
     if n % 2 == 0:
         prime_factors.append(2)
+        k1 = n // 2
+        if isprime(k1):
+            prime_factors.append(k1)
     r = math.sqrt(n)
     for k in range(3, int(r)+1, 2):
         if n % k == 0:
@@ -44,6 +47,16 @@ def prime_factors(n):
                 prime_factors.append(k1)
     return prime_factors
 
+def prime_factors(n):
+    factors = []
+    for k in range(2,int(math.sqrt(n))+1):
+        if n % k == 0 and k**2 != n:
+            factors.append(k)
+            factors.append(n//k)
+        elif k**2 == n:
+            factors.append(k)
+    prime_factors = [p for p in factors if isprime(p)]
+    return prime_factors
 
 if __name__ == "__main__":
     res = prime_factors(600851475143)

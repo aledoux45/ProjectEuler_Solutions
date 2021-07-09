@@ -7,7 +7,7 @@ import math
 from p3 import isprime
 
 
-def prime_factors(n, factors=[]):
+def prime_factors_duplicity(n, factors=[]):
     """
     Returns a list of prime factors with duplicity
     """
@@ -15,7 +15,7 @@ def prime_factors(n, factors=[]):
         return factors + [n]
     if n % 2 == 0:
         factors.append(2)
-        return prime_factors(n // 2, factors)
+        return prime_factors_duplicity(n // 2, factors)
     r = math.sqrt(n)
     for k in range(3, int(r)+1, 2):
         if n % k == 0:
@@ -29,10 +29,10 @@ def prime_factors(n, factors=[]):
                 return factors
             elif isp_k1:
                 factors.append(k1)
-                return prime_factors(n // k1, factors)
+                return prime_factors_duplicity(n // k1, factors)
             elif isp_k2:
                 factors.append(k2)
-                return prime_factors(n // k2, factors)
+                return prime_factors_duplicity(n // k2, factors)
     return factors + [n]
 
 def count(arr):
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     count_total = {}
     for k in range(1,21):
         print(k)
-        pfact_k = prime_factors(k, [])
+        pfact_k = prime_factors_duplicity(k, [])
         print(k, pfact_k)
         count_k = count(pfact_k)
         for c in count_k:
